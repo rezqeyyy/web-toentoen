@@ -4,12 +4,12 @@ import { MerchantFeatureSection } from '@/components/product/MerchantFeatureSect
 import { ProductCTA } from '@/components/product/ProductCTA';
 
 export default function ProductPage() {
-  return (
-    <div className="flex w-full flex-col">
-      <ProductHero />
-      <UserFeatureSection />
-      <MerchantFeatureSection />
-      <ProductCTA />
-    </div>
-  );
+    return (
+        <div className="flex w-full flex-col">
+        <ProductHero />
+        <UserFeatureSection />
+        <MerchantFeatureSection />
+        <ProductCTA />
+        </div>
+    );
 }
