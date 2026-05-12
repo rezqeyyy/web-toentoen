@@ -2,15 +2,15 @@ export const DIVISIONS = ["Product Team", "Bussiness Team", "IT Team"] as const;
 export type Division = (typeof DIVISIONS)[number];
 
 export type TeamMember = {
-  id: string;
-  name: string;
-  division: Division;
-  role: string;
-  quoteHighlight: string;
-  quoteRest: string;
-  imageThumbnail: string;
-  imageLarge: string;
-  linkedinUrl?: string;
+    id: string;
+    name: string;
+    division: Division;
+    role: string;
+    quoteHighlight: string;
+    quoteRest: string;
+    imageThumbnail: string;
+    imageLarge: string;
+    linkedinUrl?: string;
 };
 
 const portraitW = "https://placehold.co/400x300/cfe9de/0d4f47?text=+";
