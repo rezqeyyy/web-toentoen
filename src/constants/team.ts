@@ -200,7 +200,7 @@ export const TEAM_DATA: TeamMember[] = [
         quoteHighlight: '"Code is Poetry"',
         quoteRest: ": Membangun arsitektur clean code untuk masa depan Toentoen.",
         imageThumbnail: "/assets/asan foto.png",
-        imageLarge: "/assets/asan foto.png",
+        imageLarge: "/assets/ec7a28cf-c744-4ca3-940f-36bc9b9bfefc.png",
     },
     {
         id: "it-3",
