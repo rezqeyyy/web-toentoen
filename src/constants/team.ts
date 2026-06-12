@@ -149,8 +149,8 @@ export const TEAM_DATA: TeamMember[] = [
         role: "Quality Assurance Engineer",
         quoteHighlight: '"Quality is a Process"',
         quoteRest: ": Memastikan setiap produk yang dirilis memenuhi standar kualitas tertinggi.",
-        imageThumbnail: "/assets/yoga foto.png",
-        imageLarge: "/assets/yoga foto besar.png",
+        imageThumbnail: "/assets/yoga - Copy.jpeg",
+        imageLarge: "/assets/yoga.jpeg",
         linkedinUrl: "https://www.linkedin.com/in/yoga-ari-kumoro/"
     },
 ];
