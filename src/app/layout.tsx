@@ -3,8 +3,7 @@ import { Inter } from "next/font/google"; // Atau font pilihanmu
 import "./globals.css";
 
 // Import komponen yang sudah kita buat
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { LayoutChrome } from "@/components/layout/LayoutChrome";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,16 +20,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className={inter.className}>
-        {/* Header di atas */}
-        <Header />
-        
-        {/* Konten utama halaman */}
-        <main className="min-h-screen">
-          {children}
-        </main>
-
-        {/* Footer di bawah */}
-        <Footer />
+        <LayoutChrome>{children}</LayoutChrome>
       </body>
     </html>
   );

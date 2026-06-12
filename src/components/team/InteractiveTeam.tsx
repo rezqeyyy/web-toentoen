@@ -26,7 +26,7 @@ const LinkedInIcon = () => (
 
 export const InteractiveTeam = () => {
   const [activeDivision, setActiveDivision] =
-    useState<Division>("Product Team");
+    useState<Division>("Owner");
 
   const filteredTeam = useMemo(
     () => TEAM_DATA.filter((m) => m.division === activeDivision),
@@ -34,7 +34,7 @@ export const InteractiveTeam = () => {
   );
 
   const [selectedId, setSelectedId] = useState<string>(
-    () => TEAM_DATA.find((m) => m.division === "Product Team")?.id ?? "",
+    () => TEAM_DATA.find((m) => m.division === "Owner")?.id ?? "",
   );
 
   const selected =
