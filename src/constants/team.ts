@@ -70,6 +70,17 @@ export const TEAM_DATA: TeamMember[] = [
         imageLarge: largeW,
         linkedinUrl: " https://www.linkedin.com/in/wahyuda-abdia-putra-63b557407/",
     },
+    {
+        id: "bus-3",
+        name: "Ferdy Gunardi Yohanes",
+        division: "Bussiness Team",
+        role: "Partnership Lead",
+        quoteHighlight: '"Win Together"',
+        quoteRest:": Kemitraan yang baik tumbuh dari nilai yang saling menguatkan.",
+        imageThumbnail: "assets/ferdy.jpeg",
+        imageLarge: "assets/ferdy.jpeg",
+        linkedinUrl: "https://www.linkedin.com/in/ferdy-gunardi-08b0a571",
+    },
 
     // --- IT TEAM ---
     {
