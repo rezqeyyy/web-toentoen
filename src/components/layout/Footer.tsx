@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FOOTER_SECTIONS } from "@/constants/navigation";
 import { Logo } from "@/components/ui/Logo";
 
@@ -19,6 +20,12 @@ const SocialLink = ({
 );
 
 export const Footer = () => {
+
+    const pathname = usePathname();
+    const isHiddenPage = pathname.startsWith("/login") || pathname.startsWith("/dashboard");
+
+    if (isHiddenPage) return null;
+
     return (
         <footer className="w-full border-t border-gray-100 bg-white pt-12 pb-8">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

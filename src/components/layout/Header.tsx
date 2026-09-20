@@ -37,6 +37,10 @@ export const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  const isHiddenPage = pathname.startsWith("/login") || pathname.startsWith("/dashboard");
+
+  if (isHiddenPage) return null;
+  
   // Tutup drawer saat pindah halaman
   useEffect(() => {
     setIsOpen(false);
