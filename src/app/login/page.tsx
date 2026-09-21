@@ -20,7 +20,11 @@ export default function LoginPage() {
       // Logika dummy data untuk login
       if (email === "admin@toentoen.com" && password === "admin123") {
         // Redirect ke halaman dashboard atau home setelah sukses
-        router.push("/login/admin"); 
+        router.push("/login/admin/staf"); 
+      }
+      if (email === "adminCS@toentoen.com" && password === "admin123") {
+        // Redirect ke halaman dashboard atau home setelah sukses
+        router.push("/login/admin/supervisor"); 
       } else {
         setError("Email atau password yang Anda masukkan salah.");
         setIsLoading(false);

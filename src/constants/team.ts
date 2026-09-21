@@ -123,8 +123,8 @@ export const TEAM_DATA: TeamMember[] = [
         role: "Backend Developer",
         quoteHighlight: '"Data is Fuel"',
         quoteRest: ": Pipeline yang sehat membuat keputusan yang sehat.",
-        imageThumbnail: "/assets/zulhan foto.png",
-        imageLarge: "/assets/zulhan foto besar.png",
+        imageThumbnail: "/assets/sul - Copy.jpeg",
+        imageLarge: "/assets/sul.jpeg",
         linkedinUrl: " https://www.linkedin.com/in/zulhanariffasyahidayat/?locale=en "
     },
 
