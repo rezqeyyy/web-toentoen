@@ -2,101 +2,59 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { LoginForm } from "@/components/admin/login/LoginForm";
+import { loginUser } from "@/services/authService";
+import { LoginPayload } from "@/constants/api/admin/login";
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async (payload: LoginPayload) => {
     setError("");
     setIsLoading(true);
 
-    // Simulasi delay request jaringan
-    setTimeout(() => {
-      // Logika dummy data untuk login
-      if (email === "admin@toentoen.com" && password === "admin123") {
-        // Redirect ke halaman dashboard atau home setelah sukses
-        router.push("/login/admin/staf"); 
+    try {
+      const response = await loginUser(payload);
+
+      // Simpan token ke localStorage jika ada
+      if (response.data?.token) {
+        localStorage.setItem("token", response.data.token);
       }
-      if (email === "adminCS@toentoen.com" && password === "admin123") {
-        // Redirect ke halaman dashboard atau home setelah sukses
-        router.push("/login/admin/supervisor"); 
+
+      // Ambil nilai role dari response API.
+      // Pastikan struktur response.data.user.role sesuai dengan struktur yang sebenarnya
+      // dikembalikan oleh API ToenToen Anda.
+      const userRole = response.data?.user?.role;
+
+      // Jika role dari API bernilai "admin", arahkan ke direktori staff.
+      // Sesuaikan string "admin" dengan nilai eksak yang dikirimkan oleh backend API Anda
+      // (misalnya "admin", "adminCS", "Admin", dll.)
+      if (userRole && userRole.toLowerCase() === "admin") {
+        router.push("/login/admin/staff");
+      }
+      // Anda bisa menambahkan pemetaan untuk role lain jika dibutuhkan,
+      // misalnya untuk CTO atau Senior Sales yang terlihat pada panel Hoppscotch Anda.
+      // else if (userRole && userRole.toLowerCase() === "cto") {
+      //   router.push("/dashboard/cto");
+      // }
+      else {
+        // Tujuan default jika rolenya tidak terpetakan di atas
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
-        setError("Email atau password yang Anda masukkan salah.");
-        setIsLoading(false);
+        setError("Terjadi kesalahan pada server. Silakan coba lagi nanti.");
       }
-    }, 1000);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8 rounded-2xl bg-white p-10 shadow-xl border border-gray-100">
-        <div>
-          <h2 className="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">
-            Welcome Back
-          </h2>
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Silakan masuk ke akun Anda
-          </p>
-        </div>
-        
-        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-          <div className="space-y-4 rounded-md shadow-sm">
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                className="relative block w-full rounded-lg border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all"
-                placeholder="Email address (admin@toentoen.com)"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className="relative block w-full rounded-lg border-0 py-3 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6 transition-all"
-                placeholder="Password (admin123)"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
-
-          {error && (
-            <div className="text-sm text-red-500 bg-red-50 p-3 rounded-md border border-red-100 text-center">
-              {error}
-            </div>
-          )}
-
-          <div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="group relative flex w-full justify-center rounded-lg bg-blue-600 px-3 py-3 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:opacity-70 disabled:cursor-not-allowed transition-all"
-            >
-              {isLoading ? "Memproses..." : "Sign in"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <LoginForm onSubmit={handleLogin} isLoading={isLoading} error={error} />
   );
 }
