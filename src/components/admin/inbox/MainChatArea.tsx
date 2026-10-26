@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { ChatSession } from '@/constants/api/admin/types';
 import { StatusBadge } from './StatusBadge';
 
 interface MainChatAreaProps {
   activeChat: ChatSession;
+  isLoadingDetail: boolean;
   isUpdatingStatus: boolean;
   onUpdateStatus: () => void;
   onSendMessage: (text: string) => Promise<void>;
@@ -11,11 +12,11 @@ interface MainChatAreaProps {
 
 export const MainChatArea: React.FC<MainChatAreaProps> = ({ 
   activeChat, 
+  isLoadingDetail,
   isUpdatingStatus, 
   onUpdateStatus, 
   onSendMessage 
 }) => {
-  // Tambahkan state untuk menangani input pesan dan status pengiriman
   const [message, setMessage] = useState('');
   const [isSending, setIsSending] = useState(false);
 
@@ -46,7 +47,7 @@ export const MainChatArea: React.FC<MainChatAreaProps> = ({
     <>
       {/* MAIN CHAT AREA (Tengah) */}
       <section className="flex-1 flex flex-col bg-gray-50/50 relative min-w-[400px]">
-        {/* Header Chat */}
+        {/* Header Chat — selalu tampil langsung, tanpa loading */}
         <div className="bg-white border-b border-gray-200 flex justify-between items-center px-6 py-4 m-4 rounded-xl shadow-sm z-10 gap-4">
           <div className="flex-1">
             <h2 className="text-base md:text-lg font-bold text-gray-900 leading-tight mb-1">
@@ -69,26 +70,43 @@ export const MainChatArea: React.FC<MainChatAreaProps> = ({
           </button>
         </div>
 
-        {/* Chat Messages */}
+        {/* Chat Messages — skeleton saat loading, pesan saat sudah ada data */}
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-6">
-          {activeChat.messages?.map((msg, idx) => (
-            <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-start' : 'justify-end'}`}>
-              {msg.sender === 'user' && (
-                <img src={activeChat.avatar} alt="Avatar" className="w-8 h-8 rounded-full mr-2 mt-auto mb-1 object-cover" />
-              )}
-              <div className={`max-w-[70%] rounded-2xl p-4 shadow-sm relative group
-                ${msg.sender === 'user' ? 'bg-white border border-gray-200 rounded-bl-sm' : 'bg-[#e0f5f0] text-gray-800 rounded-br-sm'}
-              `}>
-                {msg.sender === 'user' && <p className="font-bold text-sm mb-1 text-gray-900">{activeChat.name}</p>}
-                {msg.sender === 'admin' && <p className="font-bold text-sm mb-1 text-gray-900">You</p>}
-                <p className="text-sm text-gray-700">{msg.text}</p>
-                <div className="text-[10px] text-gray-400 mt-2 flex items-center justify-end">
-                  {msg.time}
-                  {msg.sender === 'admin' && <svg className="w-3 h-3 ml-1 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>}
+          {isLoadingDetail ? (
+            /* Skeleton ringan — tidak unmount, hanya shimmer di area messages */
+            <>
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className={`flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'} gap-2`}>
+                  {i % 2 === 0 && (
+                    <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse flex-shrink-0 mt-auto" />
+                  )}
+                  <div
+                    className={`rounded-2xl bg-gray-200 animate-pulse ${i % 2 === 0 ? 'w-2/3 h-16' : 'w-1/2 h-12'}`}
+                    style={{ animationDelay: `${i * 120}ms` }}
+                  />
+                </div>
+              ))}
+            </>
+          ) : (
+            activeChat.messages?.map((msg, idx) => (
+              <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-start' : 'justify-end'}`}>
+                {msg.sender === 'user' && (
+                  <img src={activeChat.avatar} alt="Avatar" className="w-8 h-8 rounded-full mr-2 mt-auto mb-1 object-cover" />
+                )}
+                <div className={`max-w-[70%] rounded-2xl p-4 shadow-sm relative group
+                  ${msg.sender === 'user' ? 'bg-white border border-gray-200 rounded-bl-sm' : 'bg-[#e0f5f0] text-gray-800 rounded-br-sm'}
+                `}>
+                  {msg.sender === 'user' && <p className="font-bold text-sm mb-1 text-gray-900">{activeChat.name}</p>}
+                  {msg.sender === 'admin' && <p className="font-bold text-sm mb-1 text-gray-900">You</p>}
+                  <p className="text-sm text-gray-700">{msg.text}</p>
+                  <div className="text-[10px] text-gray-400 mt-2 flex items-center justify-end">
+                    {msg.time}
+                    {msg.sender === 'admin' && <svg className="w-3 h-3 ml-1 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
 
         {/* POPUP JIKA TIDAK ADA INTERAKSI */}
@@ -140,7 +158,7 @@ export const MainChatArea: React.FC<MainChatAreaProps> = ({
       </section>
 
       {/* USER DETAILS PANEL (Paling Kanan) */}
-      <aside className="w-[300px] bg-white border-l border-gray-200 hidden xl:flex flex-col p-6 overflow-y-auto">
+      <aside className="w-[300px] bg-white border-l border-gray-200 hidden xl:flex flex-col p-6 overflow-y-auto overflow-x-hidden min-w-0">
         <div className="flex flex-col items-center text-center mb-8 pt-4">
           <div className="relative">
             <img src={activeChat.avatar} alt={activeChat.name} className="w-24 h-24 rounded-full bg-gray-200 object-cover shadow-sm mb-4 border-4 border-white" />
@@ -148,8 +166,8 @@ export const MainChatArea: React.FC<MainChatAreaProps> = ({
               <span className="absolute bottom-2 right-0 bg-yellow-400 text-black text-[10px] font-bold px-2 py-0.5 rounded-full border-2 border-white">VIP</span>
             )}
           </div>
-          <h2 className="text-xl font-bold text-gray-900">{activeChat.name} <span className="text-gray-400 font-normal">{activeChat.role}</span></h2>
-          <p className="text-xs text-gray-500 mt-1">{activeChat.email}</p>
+          <h2 className="text-xl font-bold text-gray-900 break-words w-full">{activeChat.name} <span className="text-gray-400 font-normal">{activeChat.role}</span></h2>
+          <p className="text-xs text-gray-500 mt-1 break-all w-full">{activeChat.email}</p>
           <p className="text-xs text-gray-500">{activeChat.phone}</p>
         </div>
 
@@ -165,8 +183,8 @@ export const MainChatArea: React.FC<MainChatAreaProps> = ({
 
         <div className="bg-white border border-gray-200 rounded-xl p-5 mb-4 shadow-sm">
           <h3 className="font-bold text-sm text-gray-900 mb-2">Current Ticket</h3>
-          <p className="text-xs text-gray-500 mb-1">{activeChat.ticketId}</p>
-          <p className="text-sm font-medium text-gray-900 mb-3">{activeChat.ticketTitle}</p>
+          <p className="text-xs text-gray-500 mb-1 break-all">{activeChat.ticketId}</p>
+          <p className="text-sm font-medium text-gray-900 mb-3 break-all">{activeChat.ticketTitle}</p>
           <StatusBadge status={activeChat.status} />
         </div>
       </aside>

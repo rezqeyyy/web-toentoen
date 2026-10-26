@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from 'react';
+
 const BackArrow = () => (
   <svg
     viewBox="0 0 24 24"
@@ -39,6 +41,20 @@ type Props = {
 };
 
 export const LiveChatView = ({ onBack }: Props) => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+    setInputValue('');
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <div className="flex flex-1 flex-col bg-white">
       {/* Chat header */}
@@ -81,13 +97,17 @@ export const LiveChatView = ({ onBack }: Props) => {
         </div>
       </div>
 
-      {/* Input */}
+      {/* Input — spellCheck off agar teks tidak merah, warna teks hitam */}
       <div className="flex items-center gap-3 px-6 py-5">
         <div className="flex flex-1 items-center gap-2 rounded-full bg-gray-100 px-5 py-3">
           <input
             type="text"
             placeholder="Type something"
-            className="flex-1 bg-transparent text-sm text-gray-700 outline-none placeholder:text-gray-400"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            spellCheck={false}
+            className="flex-1 bg-transparent text-sm text-gray-900 outline-none placeholder:text-gray-400"
           />
           <button type="button" aria-label="Attach file">
             <PaperclipIcon />
@@ -96,6 +116,7 @@ export const LiveChatView = ({ onBack }: Props) => {
         <button
           type="button"
           aria-label="Send"
+          onClick={handleSend}
           className="flex h-11 w-11 items-center justify-center rounded-full bg-[#00c2a8] text-white transition hover:bg-[#00a892]"
         >
           <SendIcon />

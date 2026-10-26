@@ -233,16 +233,30 @@ export default function InboxPage() {
         setSelectedChatId={setSelectedChatId} 
       />
 
-      {activeChat && !isLoadingDetail ? (
+      {/* Selalu render MainChatArea jika sudah ada data — transisi smooth ala WhatsApp */}
+      {activeChat ? (
         <MainChatArea 
           activeChat={activeChat} 
+          isLoadingDetail={isLoadingDetail}
           isUpdatingStatus={isUpdatingStatus} 
           onUpdateStatus={handleUpdateStatus} 
           onSendMessage={handleSendMessage}
         />
+      ) : isLoadingDetail ? (
+        /* Skeleton awal saat belum ada chat sama sekali */
+        <section className="flex-1 flex flex-col bg-gray-50/50">
+          <div className="m-4 h-16 bg-gray-200 rounded-xl animate-pulse" />
+          <div className="flex-1 px-6 py-4 space-y-4">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className={`flex ${i % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
+                <div className={`h-14 rounded-2xl bg-gray-200 animate-pulse ${i % 2 === 0 ? 'w-2/3' : 'w-1/2'}`} />
+              </div>
+            ))}
+          </div>
+        </section>
       ) : (
-        <section className="flex-1 flex items-center justify-center bg-gray-50/50">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-teal-500"></div>
+        <section className="flex-1 flex items-center justify-center bg-gray-50/50 text-gray-400 text-sm">
+          Pilih percakapan untuk memulai
         </section>
       )}
     </div>

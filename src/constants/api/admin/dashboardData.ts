@@ -18,6 +18,8 @@ export interface SubMetric {
     id: string;
     timeRemaining: string;
     issue: string;
+    /** 'ticket' navigates to /inbox, 'report' navigates to /report */
+    type: 'ticket' | 'report';
   }
   
   export interface TopCategory {
@@ -69,9 +71,9 @@ export interface SubMetric {
   ];
   
   export const URGENT_ALERTS: UrgentAlert[] = [
-    { id: "#SUP-48291", timeRemaining: "4 hours remaining", issue: "Fake or fraudulent business" },
-    { id: "#SUP-42994", timeRemaining: "8 hours remaining", issue: "Fake or fraudulent business" },
-    { id: "#SUP-42994", timeRemaining: "8 hours remaining", issue: "Fake or fraudulent business" },
+    { id: "#SUP-48291", timeRemaining: "4 hours remaining", issue: "TECHNICAL", type: "ticket" },
+    { id: "#REP-42994", timeRemaining: "8 hours remaining", issue: "REPORT", type: "report" },
+    { id: "#BIL-42994", timeRemaining: "8 hours remaining", issue: "BILLING", type: "ticket" },
   ];
   
   export const TOP_CATEGORIES: TopCategory[] = [
