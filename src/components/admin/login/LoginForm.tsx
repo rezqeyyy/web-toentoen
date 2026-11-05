@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import { LoginPayload } from "@/constants/api/admin/login";
 
 interface LoginFormProps {
@@ -90,6 +91,18 @@ export const LoginForm: React.FC<LoginFormProps> = ({
               {isLoading ? "Memproses..." : "Sign in"}
             </button>
           </div>
+
+          <p className="text-center text-xs text-gray-400">
+            Dengan masuk, Anda menyetujui{" "}
+            <Link
+              href="/privacy-policy"
+              target="_blank"
+              className="font-medium text-blue-600 hover:text-blue-500 hover:underline transition-colors"
+            >
+              Kebijakan Privasi
+            </Link>{" "}
+            Toentoen.
+          </p>
         </form>
       </div>
     </div>
