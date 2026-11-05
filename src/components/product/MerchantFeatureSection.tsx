@@ -12,7 +12,7 @@ export const MerchantFeatureSection = () => {
             {/* Kiri: Gambar Mockup HP (Background Teal) */}
             <div className="order-2 flex justify-center rounded-3xl bg-[#00c2a8] p-8 lg:order-1 lg:rounded-none lg:bg-transparent lg:p-0">
                 <img 
-                src="https://placehold.co/600x600/00c2a8/ffffff?text=Mockup+HP+Merchant" 
+                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80&fit=crop" 
                 alt="Merchant App Mockups" 
                 className="h-auto w-full max-w-md object-contain lg:max-w-full"
                 />

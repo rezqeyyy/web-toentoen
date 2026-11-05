@@ -35,7 +35,7 @@ export const UserFeatureSection = () => {
             {/* Kanan: Gambar Mockup HP (Background Teal) */}
             <div className="flex justify-center rounded-3xl bg-[#00c2a8] p-8 lg:rounded-none lg:bg-transparent lg:p-0">
                 <img 
-                src="https://placehold.co/600x600/00c2a8/ffffff?text=Mockup+HP+User" 
+                src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=600&q=80&fit=crop" 
                 alt="User App Mockups" 
                 className="h-auto w-full max-w-md object-contain lg:max-w-full"
                 />

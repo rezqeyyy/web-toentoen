@@ -13,11 +13,11 @@ export type TeamMember = {
     linkedinUrl?: string;
 };
 
-const portraitW = "https://placehold.co/400x300/cfe9de/0d4f47?text=+";
-const portraitM = "https://placehold.co/400x300/cfe9de/0d4f47?text=+";
-const portraitH = "https://placehold.co/400x300/cfe9de/0d4f47?text=+";
-const largeW = "https://placehold.co/600x800/d4b896/ffffff?text=Foto";
-const largeM = "https://placehold.co/600x800/3f3a36/ffffff?text=Foto";
+const portraitW = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&fit=crop";
+const portraitM = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop";
+const portraitH = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&fit=crop";
+const largeW = "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&q=80&fit=crop";
+const largeM = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=800&q=80&fit=crop";
 
 export const TEAM_DATA: TeamMember[] = [
     // OWNER

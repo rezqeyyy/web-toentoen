@@ -18,13 +18,11 @@ const ChevronIcon = ({ dir }: { dir: "left" | "right" }) => (
 );
 
 const placeholderFor = (article: Article) =>
-  `https://placehold.co/600x400/${
-    article.category === "EVENT"
-      ? "fbbf24"
-      : article.category === "TIPS"
-        ? "60a5fa"
-        : "0d4f47"
-  }/ffffff?text=${encodeURIComponent(article.title)}`;
+  article.category === "EVENT"
+    ? "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop"
+    : article.category === "TIPS"
+      ? "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop"
+      : "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&fit=crop";
 
 const ArticleCard = ({ article }: { article: Article }) => (
   <article className="flex w-[260px] flex-shrink-0 flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">

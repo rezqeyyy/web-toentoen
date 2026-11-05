@@ -21,7 +21,7 @@ export const TargetAudienceSection = () => {
             {/* Card 1: User */}
             <div className="flex flex-col-reverse justify-between overflow-hidden rounded-3xl bg-[#083D39] p-8 sm:flex-row sm:gap-8">
                 <div className="mt-6 w-full sm:mt-0 sm:w-1/2">
-                <img src="/images/user-map.png" alt="User Map" className="h-full min-h-[200px] w-full rounded-2xl object-cover" onError={(e) => e.currentTarget.src = 'https://placehold.co/400x400/115e59/ffffff?text=Map'} />
+                <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&q=80&fit=crop" alt="User Map" className="h-full min-h-[200px] w-full rounded-2xl object-cover" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=400&q=80&fit=crop'} />
                 </div>
                 <div className="flex w-full flex-col items-end text-right sm:w-1/2">
                 <h3 className="mb-2 text-3xl font-bold text-white">User</h3>
@@ -50,7 +50,7 @@ export const TargetAudienceSection = () => {
                 </ul>
                 </div>
                 <div className="w-full sm:w-1/2">
-                <img src="/images/merchant-analytics.png" alt="Merchant Analytics" className="h-full min-h-[200px] w-full rounded-2xl object-cover" onError={(e) => e.currentTarget.src = 'https://placehold.co/400x400/115e59/ffffff?text=Analytics'} />
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop" alt="Merchant Analytics" className="h-full min-h-[200px] w-full rounded-2xl object-cover" onError={(e) => e.currentTarget.src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&fit=crop'} />
                 </div>
             </div>
 

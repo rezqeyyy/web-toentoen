@@ -4,7 +4,7 @@ export const AboutHero = () => {
             {/* Background Image dengan Overlay Gelap */}
             <div className="absolute inset-0 z-0">
                 <img 
-                src="https://placehold.co/1920x600/1e293b/ffffff?text=Tim+Toentoen" 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80&fit=crop" 
                 alt="Toentoen Team" 
                 className="h-full w-full object-cover opacity-60"
                 />

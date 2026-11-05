@@ -4,7 +4,7 @@ export const NewsHero = () => {
         {/* Background Image Setup */}
         <div className="absolute inset-0 z-0">
             <img 
-            src="https://placehold.co/1920x600/334155/ffffff?text=Koran+Background" 
+            src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&q=80&fit=crop" 
             alt="News Hero Background" 
             className="h-full w-full object-cover opacity-50"
             />

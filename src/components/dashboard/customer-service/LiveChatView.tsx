@@ -71,7 +71,7 @@ export const LiveChatView = ({ onBack }: Props) => {
           className="h-10 w-10 flex-shrink-0 rounded-full bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('https://placehold.co/80x80/cfe9de/0d4f47?text=+')",
+              "url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&q=80&fit=crop')",
           }}
         />
         <div>

@@ -5,9 +5,9 @@ export const TeamHero = () => {
         <section className="relative w-full">
         <div className="relative h-[260px] w-full overflow-hidden sm:h-[300px] md:h-[340px]">
             <ImageWithFallback
-            src="/images/team-hero.jpg"
+            src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&q=80&fit=crop"
             alt="Tim Toentoen"
-            fallback="https://placehold.co/1920x600/0d4f47/ffffff?text=Our+Team"
+            fallback="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1920&q=80&fit=crop"
             className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-black/45" />

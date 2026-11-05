@@ -7,12 +7,12 @@ export const AboutSection = () => {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Gambar peta */}
-          <div className="relative h-[260px] w-full overflow-hidden rounded-3xl bg-gray-100 sm:h-[320px]">
+          <div className="relative flex h-[260px] w-full items-center justify-center overflow-hidden rounded-3xl border border-gray-100 bg-[#f8fbfa] p-4 shadow-sm sm:h-[320px]">
             <ImageWithFallback
-              src="/images/map-about.jpg"
+              src="/images/indonesia-map.png"
               alt="Peta Indonesia Toentoen"
-              fallback="https://placehold.co/800x600/f3f4f6/a1a1aa?text=Peta+Indonesia"
-              className="h-full w-full object-cover"
+              fallback="/images/indonesia-map.png"
+              className="h-full w-full object-contain"
             />
           </div>
 

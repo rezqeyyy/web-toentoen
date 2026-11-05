@@ -59,7 +59,7 @@ export const FEATURES_DATA: Feature[] = [
         "Pemetaan Pencarian Lokal",
         "Sinyal Permintaan (Demand Signal)",
         ],
-        image: "/images/platform-user.png",
+        image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80&fit=crop",
     },
     {
         id: "merchant",
@@ -72,7 +72,7 @@ export const FEATURES_DATA: Feature[] = [
         "Analitik Kinerja",
         "Respon Sinyal Permintaan",
         ],
-        image: "/images/platform-merchant.png",
+        image: "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=800&q=80&fit=crop",
     },
 ];
 
@@ -91,7 +91,7 @@ export const NEWS_ARTICLES: Article[] = [
         title: "Fitur Sinyal Permintaan Kini Makin Akurat",
         excerpt:
         "Pembaruan terbaru algoritma kami memungkinkan rekomendasi menjadi lebih presisi sesuai lokasi pengguna.",
-        image: "/images/news-1.jpg",
+        image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=600&q=80&fit=crop",
     },
     {
         id: 2,
@@ -99,7 +99,7 @@ export const NEWS_ARTICLES: Article[] = [
         title: "Toentoen Hadir di Festival Kuliner Jakarta",
         excerpt:
         "Kunjungi booth kami dan dapatkan berbagai promo menarik dari merchant lokal pilihan di acara komunitas terbesar tahun ini.",
-        image: "/images/news-2.jpg",
+        image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&fit=crop",
     },
     {
         id: 3,
@@ -107,7 +107,7 @@ export const NEWS_ARTICLES: Article[] = [
         title: "Cara Efektif Menarik Pelanggan Sekitar",
         excerpt:
         "Strategi simple yang bisa merchant lokal terapkan untuk menggandakan visibilitas di aplikasi. Lakukan sekarang!",
-        image: "/images/news-3.jpg",
+        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop",
     },
     {
         id: 4,
@@ -115,7 +115,7 @@ export const NEWS_ARTICLES: Article[] = [
         title: "Fitur Sinyal Permintaan Kini Makin Akurat",
         excerpt:
         "Pembaruan terbaru algoritma kami memungkinkan rekomendasi menjadi lebih presisi sesuai lokasi pengguna.",
-        image: "/images/news-4.jpg",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&fit=crop",
     },
     {
         id: 5,
@@ -123,6 +123,6 @@ export const NEWS_ARTICLES: Article[] = [
         title: "Toentoen Hadir di Festival Kuliner Jakarta",
         excerpt:
         "Kunjungi booth kami dan dapatkan berbagai promo menarik dari merchant lokal pilihan di acara komunitas terbesar tahun ini.",
-        image: "/images/news-5.jpg",
+        image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop",
     },
 ];
