@@ -28,20 +28,25 @@ export default function LoginPage() {
       // dikembalikan oleh API ToenToen Anda.
       const userRole = response.data?.user?.role;
 
-      // Jika role dari API bernilai "admin", arahkan ke direktori staff.
-      // Sesuaikan string "admin" dengan nilai eksak yang dikirimkan oleh backend API Anda
-      // (misalnya "admin", "adminCS", "Admin", dll.)
-      if (userRole && userRole.toLowerCase() === "admin") {
+      // Pemetaan Role Login
+      const roleLower = userRole ? userRole.toLowerCase() : "";
+
+      if (roleLower.includes("supervisor") && roleLower.includes("sales")) {
+        router.push("/login/sales/supervisor");
+      } else if (roleLower.includes("senior") && roleLower.includes("sales")) {
+        router.push("/login/sales/supervisor");
+      } else if (roleLower.includes("cmo") || roleLower.includes("com")) {
+        router.push("/login/cmo");
+      } else if (roleLower.includes("social") || roleLower.includes("sosial") || roleLower.includes("sosmed") || roleLower.includes("socmed")) {
+        router.push("/login/social-media");
+      } else if (roleLower.includes("sales")) {
+        router.push("/login/sales/staff");
+      } else if (roleLower.includes("supervisor") || roleLower.includes("spv")) {
+        router.push("/login/admin/supervisor");
+      } else if (roleLower.includes("admin")) {
         router.push("/login/admin/staff");
-      }
-      // Anda bisa menambahkan pemetaan untuk role lain jika dibutuhkan,
-      // misalnya untuk CTO atau Senior Sales yang terlihat pada panel Hoppscotch Anda.
-      // else if (userRole && userRole.toLowerCase() === "cto") {
-      //   router.push("/dashboard/cto");
-      // }
-      else {
-        // Tujuan default jika rolenya tidak terpetakan di atas
-        router.push("/dashboard");
+      } else {
+        router.push("/login/sales/staff");
       }
     } catch (err) {
       if (err instanceof Error) {

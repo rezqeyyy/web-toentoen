@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const HIDE_CHROME_PREFIXES = ["/sales-dashboard", "/customer-service"];
+const HIDE_CHROME_PREFIXES = ["/customer-service", "/login"];
 
 export const LayoutChrome = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
